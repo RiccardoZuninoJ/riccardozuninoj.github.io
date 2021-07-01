@@ -6,140 +6,297 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/93ff1b538f.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <title>VaxData | I dati in tempo reale sui vaccini COVID-19 in Italia</title>
 
     <style>
-        body
-        {
+        body {
             height: 100%;
-            background: linear-gradient(#2b5876 , #4e4376);
+            background: linear-gradient(#2b5876, #4e4376);
         }
-        nav
-        {
+
+        nav {
             margin-bottom: 10px;
         }
 
-        .title
-        {
+        .title {
             margin-bottom: 0;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">VaxData</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link align-middle active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#">Dove prendiamo i dati?</a>
-                    <a class="nav-link" href="#">Open Source</a>
-                </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">VaxData</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link align-middle active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="#">Dove prendiamo i dati?</a>
+                <a class="nav-link" href="#">Open Source</a>
             </div>
-        </div>
-    </nav>
-    <div class="p-3 lg-5 bg-light rounded-3 col-lg-8 mx-auto">
-        <div class="container-fluid py-3">
-            <h1 class="display-5 fw-bold">Dati sul Vaccino COVID-19 <i class="fas fa-syringe"></i></h1>
-            <p>Dati aggiornati al <span id="dataaggiornamento">00/00/0000</span></p>
-            <p class=" fs-3 fw-bold title"> Dosi totali somministrate</p>
-            <span id="totaledosi" class="fs-3"></span>
-            <hr>
-            <div class="row">
-                <div class="col">
-                    <p class="fs-3 fw-bold">Suddivisione in fasce d'età</p>
-                    <p class="fs-5 fw-bold">12-19 <br> <span id="12-19" class="fs-5 fw-bold"></span> <span class="fs-5 fw-normal">dosi</span>
-                        <br><span class="fs-5 fw-normal">di cui <span id="12-19-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
-                    </p>
-                    <p class="fs-5 fw-bold">20-29 <br> <span id="20-29" class="fs-5 fw-bold"></span> <span class="fs-5 fw-normal">dosi</span>
-                        <br><span class="fs-5 fw-normal">di cui <span id="20-29-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
-                    </p>
-                    <p class="fs-5 fw-bold">30-39 <br> <span id="30-39" class="fs-5 fw-bold"></span> <span class="fs-5 fw-normal">dosi</span>
-                        <br><span class="fs-5 fw-normal">di cui <span id="30-39-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
-                    </p>
-                    <p class="fs-5 fw-bold">40-49 <br> <span id="40-49" class="fs-5 fw-bold"></span> <span class="fs-5 fw-normal">dosi</span>
-                        <br><span class="fs-5 fw-normal">di cui <span id="40-49-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
-                    </p>
-                    <p class="fs-5 fw-bold">50-59 <br> <span id="50-59" class="fs-5 fw-bold"></span> <span class="fs-5 fw-normal">dosi</span>
-                        <br><span class="fs-5 fw-normal">di cui <span id="50-59-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
-                    </p>
-                    <p class="fs-5 fw-bold">60-69 <br> <span id="60-69" class="fs-5 fw-bold"></span> <span class="fs-5 fw-normal">dosi</span>
-                        <br><span class="fs-5 fw-normal">di cui <span id="60-69-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
-                    </p>
-                    <p class="fs-5 fw-bold">70-79 <br> <span id="70-79" class="fs-5 fw-bold"></span> <span class="fs-5 fw-normal">dosi</span>
-                        <br><span class="fs-5 fw-normal">di cui <span id="70-79-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
-                    </p>
-                    <p class="fs-5 fw-bold">80-89 <br> <span id="80-89" class="fs-5 fw-bold"></span> <span class="fs-5 fw-normal">dosi</span>
-                        <br><span class="fs-5 fw-normal">di cui <span id="80-89-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
-                    </p>
-                    <p class="fs-5 fw-bold">90+ <br> <span id="over90" class="fs-5 fw-bold"></span> <span class="fs-5 fw-normal">dosi</span>
-                        <br><span class="fs-5 fw-normal">di cui <span id="over90-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
-                    </p>
-                </div>
-                <div class="col">
-
-                    <p class="fs-3 fw-bold">Suddivisione in fasce d'età per sesso</p>
-                    <p class="fs-5 fw-bold">12-19<br>
-                        <span id="12-19-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-male"></i> | </span>
-                        <span id="12-19-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-female"></i></span>
-                    </p>
-                    <p class="fs-5 fw-bold">20-29<br>
-                        <span id="20-29-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-male"></i> | </span>
-                        <span id="20-29-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-female"></i></span>
-                    </p>
-                    <p class="fs-5 fw-bold">30-39<br>
-                        <span id="30-39-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-male"></i> | </span>
-                        <span id="30-39-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-female"></i></span>
-                    </p>
-                    <p class="fs-5 fw-bold">40-49<br>
-                        <span id="40-49-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-male"></i> | </span>
-                        <span id="40-49-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-female"></i></span>
-                    </p>
-                    <p class="fs-5 fw-bold">50-59<br>
-                    <span id="50-59-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-male"></i> | </span>
-                    <span id="50-59-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-female"></i></span>
-                    </p>
-                    <p class="fs-5 fw-bold">60-69<br>
-                        <span id="60-69-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-male"></i> | </span>
-                        <span id="60-69-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-female"></i></span>
-                    </p>
-                    <p class="fs-5 fw-bold">70-79<br>
-                        <span id="70-79-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-male"></i> | </span>
-                        <span id="70-79-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-female"></i></span>
-                    </p>
-                    <p class="fs-5 fw-bold">80-89<br>
-                        <span id="80-89-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-male"></i> | </span>
-                        <span id="80-89-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-female"></i></span>
-                    </p>
-                    <p class="fs-5 fw-bold">90+<br>
-                        <span id="over90-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-male"></i> | </span>
-                        <span id="over90-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i class="fas fa-female"></i></span>
-                    </p>
-                    </div>
-            </div>
-            <hr>
-
-            <p class=" fs-3 fw-bold title">FAQ</p>
-            <p>
-                <ul>
-                    <li>I dati sono affidabili?</li>
-                    <p>I dati vengono ottenuti dagli Open Data forniti gratuitamente e aggiornati in tempo reale -
-                        Puoi trovare gli Open Data su <a href="https://github.com/italia/covid19-opendata-vaccini">GitHub</a><br/>
-                        <span class="text-danger fw-bold">I dati non sono gestiti da VaxData</span>
-                    </p>
-                    <li>Il codice del sito web è Open Source?</li>
-                    <p>Assolutamente sì! Puoi trovare il codice del sito su GitHub</p>
-                </ul>
-            </p>
         </div>
     </div>
+</nav>
+<div class="p-3 lg-5 bg-light rounded-3 col-lg-8 mx-auto">
+    <div class="container-fluid py-3">
+        <h1 class="display-5 fw-bold">Dati sul Vaccino COVID-19 <i class="fas fa-syringe"></i></h1>
+        <p>Dati aggiornati al <span id="dataaggiornamento">00/00/0000</span></p>
+        <p class=" fs-3 fw-bold title"> Dosi totali somministrate</p>
+        <span id="totaledosi" class="fs-3"></span>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <p class="fs-3 fw-bold">Suddivisione in fasce d'età</p>
+                <p class="fs-5 fw-bold">12-19 <br> <span id="12-19" class="fs-5 fw-bold"></span> <span
+                        class="fs-5 fw-normal">dosi</span>
+                    <br><span class="fs-5 fw-normal">di cui <span id="12-19-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
+                </p>
+                <p class="fs-5 fw-bold">20-29 <br> <span id="20-29" class="fs-5 fw-bold"></span> <span
+                        class="fs-5 fw-normal">dosi</span>
+                    <br><span class="fs-5 fw-normal">di cui <span id="20-29-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
+                </p>
+                <p class="fs-5 fw-bold">30-39 <br> <span id="30-39" class="fs-5 fw-bold"></span> <span
+                        class="fs-5 fw-normal">dosi</span>
+                    <br><span class="fs-5 fw-normal">di cui <span id="30-39-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
+                </p>
+                <p class="fs-5 fw-bold">40-49 <br> <span id="40-49" class="fs-5 fw-bold"></span> <span
+                        class="fs-5 fw-normal">dosi</span>
+                    <br><span class="fs-5 fw-normal">di cui <span id="40-49-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
+                </p>
+                <p class="fs-5 fw-bold">50-59 <br> <span id="50-59" class="fs-5 fw-bold"></span> <span
+                        class="fs-5 fw-normal">dosi</span>
+                    <br><span class="fs-5 fw-normal">di cui <span id="50-59-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
+                </p>
+                <p class="fs-5 fw-bold">60-69 <br> <span id="60-69" class="fs-5 fw-bold"></span> <span
+                        class="fs-5 fw-normal">dosi</span>
+                    <br><span class="fs-5 fw-normal">di cui <span id="60-69-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
+                </p>
+                <p class="fs-5 fw-bold">70-79 <br> <span id="70-79" class="fs-5 fw-bold"></span> <span
+                        class="fs-5 fw-normal">dosi</span>
+                    <br><span class="fs-5 fw-normal">di cui <span id="70-79-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
+                </p>
+                <p class="fs-5 fw-bold">80-89 <br> <span id="80-89" class="fs-5 fw-bold"></span> <span
+                        class="fs-5 fw-normal">dosi</span>
+                    <br><span class="fs-5 fw-normal">di cui <span id="80-89-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
+                </p>
+                <p class="fs-5 fw-bold">90+ <br> <span id="over90" class="fs-5 fw-bold"></span> <span
+                        class="fs-5 fw-normal">dosi</span>
+                    <br><span class="fs-5 fw-normal">di cui <span id="over90-seconde" class="fs-5 fw-bold"></span> seconde dosi</span>
+                </p>
+            </div>
+            <div class="col">
+
+                <p class="fs-3 fw-bold">Suddivisione in fasce d'età per sesso</p>
+                <p class="fs-5 fw-bold">12-19<br>
+                    <span id="12-19-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-male"></i> | </span>
+                    <span id="12-19-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-female"></i></span>
+                </p>
+                <p class="fs-5 fw-bold">20-29<br>
+                    <span id="20-29-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-male"></i> | </span>
+                    <span id="20-29-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-female"></i></span>
+                </p>
+                <p class="fs-5 fw-bold">30-39<br>
+                    <span id="30-39-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-male"></i> | </span>
+                    <span id="30-39-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-female"></i></span>
+                </p>
+                <p class="fs-5 fw-bold">40-49<br>
+                    <span id="40-49-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-male"></i> | </span>
+                    <span id="40-49-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-female"></i></span>
+                </p>
+                <p class="fs-5 fw-bold">50-59<br>
+                    <span id="50-59-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-male"></i> | </span>
+                    <span id="50-59-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-female"></i></span>
+                </p>
+                <p class="fs-5 fw-bold">60-69<br>
+                    <span id="60-69-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-male"></i> | </span>
+                    <span id="60-69-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-female"></i></span>
+                </p>
+                <p class="fs-5 fw-bold">70-79<br>
+                    <span id="70-79-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-male"></i> | </span>
+                    <span id="70-79-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-female"></i></span>
+                </p>
+                <p class="fs-5 fw-bold">80-89<br>
+                    <span id="80-89-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-male"></i> | </span>
+                    <span id="80-89-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-female"></i></span>
+                </p>
+                <p class="fs-5 fw-bold">90+<br>
+                    <span id="over90-maschile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-male"></i> | </span>
+                    <span id="over90-femminile" class="fs-5 fw-normal"></span> <span class="fs-5 fw-normal"><i
+                            class="fas fa-female"></i></span>
+                </p>
+            </div>
+        </div>
+        <hr>
+        <p class=" fs-3 fw-bold title">Dati per regione</p>
+        <p>
+            <span class="fs-4 fw-bold">Abruzzo</span>
+        <p>
+            Dosi somministrate <span id="ABRsomm"></span><br>
+            Dosi consegnate <span id="ABRcons"></span><br>
+            Percentuale somministrazione <span id="ABRperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Basilicata</span>
+        <p>
+            Dosi somministrate <span id="BASsomm"></span><br>
+            Dosi consegnate <span id="BAScons"></span><br>
+            Percentuale somministrazione <span id="BASperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Calabria</span><br>
+        <p>
+            Dosi somministrate <span id="CALsomm"></span><br>
+            Dosi consegnate <span id="CALcons"></span><br>
+            Percentuale somministrazione <span id="CALperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Campania</span><br>
+        <p>
+            Dosi somministrate <span id="CAMsomm"></span><br>
+            Dosi consegnate <span id="CAMcons"></span><br>
+            Percentuale somministrazione <span id="CAMperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Emilia Romagna</span><br>
+        <p>
+            Dosi somministrate <span id="EMRsomm"></span><br>
+            Dosi consegnate <span id="EMRcons"></span><br>
+            Percentuale somministrazione <span id="EMRperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Friuli Venezia Giulia</span><br>
+        <p>
+            Dosi somministrate <span id="FVGsomm"></span><br>
+            Dosi consegnate <span id="FVGcons"></span><br>
+            Percentuale somministrazione <span id="FVGperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Lazio</span><br>
+        <p>
+            Dosi somministrate <span id="LAZsomm"></span><br>
+            Dosi consegnate <span id="LAZcons"></span><br>
+            Percentuale somministrazione <span id="LAZperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Liguria</span><br>
+        <p>
+            Dosi somministrate <span id="LIGsomm"></span><br>
+            Dosi consegnate <span id="LIGcons"></span><br>
+            Percentuale somministrazione <span id="LIGperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Lombardia</span><br>
+        <p>
+            Dosi somministrate <span id="LOMsomm"></span><br>
+            Dosi consegnate <span id="LOMcons"></span><br>
+            Percentuale somministrazione <span id="LOMperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Marche</span><br>
+        <p>
+            Dosi somministrate <span id="MARsomm"></span><br>
+            Dosi consegnate <span id="MARcons"></span><br>
+            Percentuale somministrazione <span id="MARperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Molise</span><br>
+        <p>
+            Dosi somministrate <span id="MOLsomm"></span><br>
+            Dosi consegnate <span id="MOLcons"></span><br>
+            Percentuale somministrazione <span id="MOLperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Provincia Autonoma di Bolzano</span><br>
+        <p>
+            Dosi somministrate <span id="PABsomm"></span><br>
+            Dosi consegnate <span id="PABcons"></span><br>
+            Percentuale somministrazione <span id="PABperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Provincia Autonoma di Trento</span><br>
+        <p>
+            Dosi somministrate <span id="PATsomm"></span><br>
+            Dosi consegnate <span id="PATcons"></span><br>
+            Percentuale somministrazione <span id="PATperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Piemonte</span><br>
+        <p>
+            Dosi somministrate <span id="PIEsomm"></span><br>
+            Dosi consegnate <span id="PIEcons"></span><br>
+            Percentuale somministrazione <span id="PIEperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Puglia</span><br>
+        <p>
+            Dosi somministrate <span id="PUGsomm"></span><br>
+            Dosi consegnate <span id="PUGcons"></span><br>
+            Percentuale somministrazione <span id="PUGperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Sardegna</span><br>
+        <p>
+            Dosi somministrate <span id="SARsomm"></span><br>
+            Dosi consegnate <span id="SARcons"></span><br>
+            Percentuale somministrazione <span id="SARperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Sicilia</span><br>
+        <p>
+            Dosi somministrate <span id="SICsomm"></span><br>
+            Dosi consegnate <span id="SICcons"></span><br>
+            Percentuale somministrazione <span id="SICperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Toscana</span><br>
+        <p>
+            Dosi somministrate <span id="TOSsomm"></span><br>
+            Dosi consegnate <span id="TOScons"></span><br>
+            Percentuale somministrazione <span id="TOSperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Umbria</span><br>
+        <p>
+            Dosi somministrate <span id="UMBsomm"></span><br>
+            Dosi consegnate <span id="UMBcons"></span><br>
+            Percentuale somministrazione <span id="UMBperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Valle d'Aosta</span><br>
+        <p>
+            Dosi somministrate <span id="VDAsomm"></span><br>
+            Dosi consegnate <span id="VDAcons"></span><br>
+            Percentuale somministrazione <span id="VDAperc"></span>
+        </p>
+        <span class="fs-4 fw-bold">Veneto</span><br>
+        <p>
+            Dosi somministrate <span id="VENsomm"></span><br>
+            Dosi consegnate <span id="VENcons"></span><br>
+            Percentuale somministrazione <span id="VENperc"></span>
+        </p>
+        </p>
+        <hr>
+        <p class=" fs-3 fw-bold title">FAQ</p>
+        <p>
+        <ul>
+            <li>I dati sono affidabili?</li>
+            <p>I dati vengono ottenuti dagli Open Data forniti gratuitamente e aggiornati in tempo reale -
+                Puoi trovare gli Open Data su <a
+                        href="https://github.com/italia/covid19-opendata-vaccini">GitHub</a><br/>
+                <span class="text-danger fw-bold">I dati non sono gestiti da VaxData</span>
+            </p>
+            <li>Il codice del sito web è Open Source?</li>
+            <p>Assolutamente sì! Puoi trovare il codice del sito su GitHub</p>
+        </ul>
+        </p>
+    </div>
+</div>
 
 <!-- Optional JavaScript; choose one of the two! -->
 <script>
@@ -147,16 +304,16 @@
         url: "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/anagrafica-vaccini-summary-latest.csv",
         type: 'get',
         dataType: 'text',
-        success: function(data) {
+        success: function (data) {
             let lines = data.split('\n');
             let fields = lines[0].split(',');
 
             let output = [];
 
-            for(let i = 1; i < lines.length; i++){
+            for (let i = 1; i < lines.length; i++) {
                 let current = lines[i].split(',');
                 let doc = {};
-                for(let j = 0; j < fields.length; j++){
+                for (let j = 0; j < fields.length; j++) {
                     doc[fields[j]] = current[j];
                 }
                 output.push(doc);
@@ -164,8 +321,7 @@
             console.log(output);
             var tot;
             tot = 0;
-            for(let i=0; i < lines.length-2; i = i+1)
-            {
+            for (let i = 0; i < lines.length - 2; i = i + 1) {
                 tot = tot + parseInt(output[i]['totale']);
                 $('#' + output[i]['fascia_anagrafica']).text(output[i]['totale']);
             }
@@ -173,8 +329,7 @@
             $("#over90").text(output[8]['totale']);
             $("#dataaggiornamento").text(output[0]['ultimo_aggiornamento']);
 
-            for(let i=0; i < lines.length-2; i = i+1)
-            {
+            for (let i = 0; i < lines.length - 2; i = i + 1) {
                 tot = tot + parseInt(output[i]['totale']);
                 $('#' + output[i]['fascia_anagrafica'] + '-maschile').text(output[i]['sesso_maschile']);
                 $('#' + output[i]['fascia_anagrafica'] + '-femminile').text(output[i]['sesso_femminile']);
@@ -182,8 +337,7 @@
             $('#over90-femminile').text(output[8]['sesso_femminile']);
             $('#over90-maschile').text(output[8]['sesso_maschile']);
 
-            for(let i=0; i < lines.length-2; i = i+1)
-            {
+            for (let i = 0; i < lines.length - 2; i = i + 1) {
                 tot = tot + parseInt(output[i]['totale']);
                 $('#' + output[i]['fascia_anagrafica'] + '-seconde').text(output[i]['seconda_dose']);
             }
@@ -191,14 +345,50 @@
 
 
         },
-        error: function(jqXHR, textStatus, errorThrow){
+        error: function (jqXHR, textStatus, errorThrow) {
             console.log(textStatus);
         }
     });
-
 </script>
+<script>
+
+    jQuery.ajax({
+        url: "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/vaccini-summary-latest.csv",
+        type: 'get',
+        dataType: 'text',
+        success: function (data) {
+            let lines = data.split('\n');
+            let fields = lines[0].split(',');
+
+            let output = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                let current = lines[i].split(',');
+                let doc = {};
+                for (let j = 0; j < fields.length; j++) {
+                    doc[fields[j]] = current[j];
+                }
+                output.push(doc);
+            }
+
+            for (let i = 0; i < lines.length - 2; i = i + 1) {
+                $('#' + output[i]['area'] + 'somm').text(output[i]['dosi_somministrate']);
+                $('#' + output[i]['area'] + 'cons').text(output[i]['dosi_consegnate']);
+                $('#' + output[i]['area'] + 'perc').text(output[i]['percentuale_somministrazione'] + "%");
+
+            }
+
+        },
+        error: function (jqXHR, textStatus, errorThrow) {
+            console.log(textStatus);
+        }
+    });
+</script>
+
 <!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--
