@@ -1,0 +1,32 @@
+@font-face {
+    font-family: Kollektif;
+    src: url(fonts/Kollektif.ttf);
+}
+@font-face {
+    font-family: KollektifBold;
+    src: url(fonts/Kollektif-Bold.ttf);
+}
+
+body
+{
+    background: #000428;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    font-family: Kollektif, sans-serif;
+    font-size: 20px;
+}
+#logo{
+    font-family: KollektifBold;
+    font-size: 30px;
+}
+h1{
+    font-family: KollektifBold;
+    font-size: 70px;
+}
+.gradient
+{
+    background:
+    transparent border-box,
+     linear-gradient(to right, #9c20aa, #fb3570) border-box;
+}
